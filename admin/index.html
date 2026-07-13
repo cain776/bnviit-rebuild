@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta name="robots" content="noindex, nofollow" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="비앤빛 리뉴얼 홈페이지 운영 관리자 프로토타입">
+  <title>BNVIIT CMS · 리뉴얼 관리자</title>
+  <link rel="stylesheet" href="assets/admin-base.css">
+  <link rel="stylesheet" href="assets/admin-components-1.css">
+  <link rel="stylesheet" href="assets/admin-components-2.css">
+  <link rel="stylesheet" href="assets/admin-components-3.css">
+  <link rel="stylesheet" href="assets/admin-components-4.css">
+  <link rel="stylesheet" href="assets/admin-overrides.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="관리자 메뉴">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>
+          <strong>BNVIIT CMS</strong>
+          <small>Renewal Admin</small>
+        </span>
+      </div>
+
+      <nav class="side-nav" id="sideNav"></nav>
+
+      <div class="sidebar-foot">
+        <span class="environment-dot" aria-hidden="true"></span>
+        <span>리빌드 기준 · Prototype</span>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-only" id="menuToggle" type="button" aria-label="메뉴 열기">☰</button>
+          <div>
+            <p class="breadcrumb" id="breadcrumb">운영 현황</p>
+            <h1 id="pageTitle">대시보드</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <label class="global-search">
+            <span class="sr-only">메뉴 검색</span>
+            <input id="globalSearch" type="search" placeholder="메뉴 또는 페이지 검색">
+          </label>
+          <a class="button button-secondary" href="http://localhost:5173/" data-action="open-home-preview">홈페이지 미리보기</a>
+          <button class="profile-button" type="button" data-view="users-permissions" aria-label="관리자 계정과 권한 열기">
+            <span class="avatar">관</span>
+            <span class="profile-copy"><b>콘텐츠 관리자</b><small>super_admin</small></span>
+          </button>
+        </div>
+      </header>
+
+      <main class="content" id="content" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <dialog class="editor-dialog" id="editorDialog" aria-labelledby="editorTitle">
+    <form method="dialog" class="editor-shell" id="editorForm">
+      <header class="editor-header">
+        <div>
+          <p class="eyebrow" id="editorEyebrow">페이지 콘텐츠</p>
+          <h2 id="editorTitle">페이지 편집</h2>
+        </div>
+        <button class="icon-button" type="submit" value="cancel" formnovalidate aria-label="편집 창 닫기">×</button>
+      </header>
+      <div class="editor-body" id="editorBody"></div>
+      <footer class="editor-footer">
+        <span class="save-note">프로토타입 저장값은 이 브라우저에만 보관됩니다.</span>
+        <button class="button button-secondary" type="submit" value="cancel" formnovalidate>취소</button>
+        <button class="button button-primary" id="saveEditor" value="default">변경사항 저장</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="../shared/bnviit-site-menu.js"></script>
+  <script src="assets/admin-catalog.js"></script>
+  <script src="assets/admin-collections.js"></script>
+  <script src="assets/admin-collections-hospital.js"></script>
+  <script src="assets/admin-collections-vision.js"></script>
+  <script src="assets/admin-collections-ops.js"></script>
+  <script src="assets/admin-collections-consult.js"></script>
+  <script src="data/sns/sns.collection.js"></script>
+  <script src="data/doctors/doctors.rows.js"></script>
+  <script src="data/news/news.collection.js"></script>
+  <script src="data/events/events.collection.js"></script>
+  <script src="data/news/news-events.collection.js"></script>
+  <script src="data/blog/blog.collection.js"></script>
+  <script src="data/research/research.collection.js"></script>
+  <script src="data/affiliate/affiliate.collection.js"></script>
+  <script src="data/partners/partners.collection.js"></script>
+  <script src="data/with/with.collection.js"></script>
+  <script src="data/exboard-fr/exboard-fr.collection.js"></script>
+  <script src="data/exboard-star/exboard-star.collection.js"></script>
+  <script src="data/onair/onair.collection.js"></script>
+  <script src="data/member/member.collection.js"></script>
+  <script src="data/bevent/bevent.collection.js"></script>
+  <script src="data/doctor-fr/doctor-fr.collection.js"></script>
+  <script src="data/notice-fr/notice-fr.collection.js"></script>
+  <script src="data/company-apply/company-apply.collection.js"></script>
+  <script src="data/banner/banner.collection.js"></script>
+  <script src="data/_demo/demo-legacy-data.js"></script>
+  <script src="assets/admin-data.js"></script>
+  <script src="assets/admin-core.js"></script>
+  <script src="assets/admin-render-views-a.js"></script>
+  <script src="assets/admin-render-views-b.js"></script>
+  <script src="assets/admin-consultations-api.js"></script>
+  <script src="assets/admin-legacy-entities-api.js"></script>
+  <script src="assets/admin-dispatch.js"></script>
+  <script src="assets/admin-util-late.js"></script>
+  <script src="assets/admin-editors.js"></script>
+  <script src="assets/admin-save.js"></script>
+  <script src="assets/admin-handlers-click.js"></script>
+  <script src="assets/admin-handlers-io.js"></script>
+  <script src="assets/admin-bootstrap.js"></script>
+</body>
+</html>

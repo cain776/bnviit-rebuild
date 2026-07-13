@@ -1,0 +1,133 @@
+(function (root) {
+  'use strict'
+
+  const sections = [
+    {
+      id: 'home',
+      no: '00',
+      label: '홈',
+      page: 'home',
+      path: '/',
+      owner: 'pages/home',
+      placements: ['structure'],
+      locked: true,
+      adminPages: ['home'],
+    },
+    {
+      id: 'bnviit',
+      no: '01',
+      label: '비앤빛안과',
+      page: 'hours',
+      path: '/bnviit',
+      owner: 'features/hospital',
+      placements: ['gnb', 'sitemap', 'structure'],
+      dropdownKey: 'bn',
+      cols: 4,
+      adminPages: ['hours', 'doctors', 'ai', 'surgery', 'aftercare', 'history', 'news', 'onair', 'research', 'papers', 'reviews', 'starreviews', 'globalreviews', 'sns'],
+      lnb: [
+        ['hours', '진료시간 · 오시는길'], ['doctors', '원장단'], ['ai', 'AI 검사'], ['surgery', '수술 시스템'], ['aftercare', '사후케어'],
+        ['history', '시작과 성장'], ['news', '공지 · 언론보도'], ['onair', 'ON AIR'], ['research', '수상'], ['papers', '연구 · 논문'],
+        ['reviews', '고객 후기'], ['starreviews', '스타 후기'], ['globalreviews', '글로벌 후기'], ['sns', 'SNS 후기'],
+      ],
+      groups: [
+        { label: '병원안내', items: [{ label: '진료시간 · 오시는길', page: 'hours' }, { label: '원장단', page: 'doctors' }] },
+        { label: '의료시스템', items: [{ label: 'AI 검사', page: 'ai' }, { label: '수술 시스템', page: 'surgery' }, { label: '사후케어', page: 'aftercare' }] },
+        { label: '비앤빛 소개', items: [{ label: '시작과 성장', page: 'history' }, { label: '공지 · 언론보도', page: 'news' }, { label: 'ON AIR', page: 'onair' }, { label: '수상', page: 'research' }, { label: '연구 · 논문', page: 'papers' }] },
+        { label: '고객 후기', items: [{ label: '고객 후기', page: 'reviews' }, { label: '스타 후기', page: 'starreviews' }, { label: '글로벌 후기', page: 'globalreviews' }, { label: 'SNS 후기', page: 'sns' }] },
+      ],
+    },
+    {
+      id: 'vision-correction',
+      no: '02',
+      label: '시력교정',
+      page: 'compare',
+      path: '/vision-correction',
+      owner: 'features/vision-correction',
+      placements: ['gnb', 'sitemap', 'structure'],
+      dropdownKey: 'vc',
+      cols: 5,
+      adminPages: ['compare', 'smilepro', 'smilelasik', 'icl', 'personaleyes', 'lasik', 'xtra', 'mono', 'presby'],
+      lnb: [
+        ['compare', '시력교정술 비교'], ['smilepro', '스마일프로'], ['smilelasik', '스마일라식'], ['icl', '렌즈삽입술'],
+        ['personaleyes', '퍼스널아이즈'], ['lasik', '라식 · 라섹'], ['xtra', '각막강화술'], ['mono', '모노비전'], ['presby', '노안교정'],
+      ],
+      groups: [
+        { label: '비교 · 진단', items: [{ label: '시력교정술 비교', page: 'compare' }, { label: 'AI 자가검사 ↗', page: 'stub', navLabel: 'AI 자가검사 (외부 연동)' }] },
+        { label: '스마일', items: [{ label: '스마일프로', page: 'smilepro' }, { label: '스마일라식', page: 'smilelasik' }] },
+        { label: '렌즈삽입술', items: [{ label: '렌즈삽입술', page: 'icl' }] },
+        { label: '라식 · 라섹', items: [{ label: '퍼스널아이즈', page: 'personaleyes' }, { label: '라식 · 라섹', page: 'lasik' }, { label: '각막강화술', page: 'xtra' }, { label: '모노비전', page: 'mono', badge: 'NEW' }] },
+        { label: '노안교정', items: [{ label: '노안교정', page: 'presby' }] },
+      ],
+    },
+    {
+      id: 'specialty',
+      no: '03',
+      label: '전문분야',
+      page: 'specialty',
+      path: '/specialty',
+      owner: 'features/specialty',
+      placements: ['gnb', 'sitemap', 'structure'],
+      dropdownKey: 'sp',
+      cols: 4,
+      adminPages: ['specialty'],
+      groups: [
+        { label: '백내장', items: [{ label: 'LAL 백내장 수술', page: 'specialty' }, { label: '레이저 백내장 수술', page: 'specialty' }, { label: '인공수정체 4종', page: 'specialty' }] },
+        { label: '드림렌즈', items: [{ label: '드림렌즈 · 하드렌즈', page: 'specialty' }, { label: 'PARAGON / LK / PRGP', page: 'specialty' }] },
+        { label: '안질환', items: [{ label: '안구건조증', page: 'specialty' }, { label: '망막질환', page: 'specialty' }, { label: '녹내장', page: 'specialty' }] },
+        { label: '안종합검진', items: [{ label: '기본 · 프리미엄 프로그램', page: 'specialty' }] },
+      ],
+    },
+    {
+      id: 'booking',
+      no: '04',
+      label: '상담 · 예약',
+      page: 'booking',
+      path: '/booking',
+      owner: 'features/booking',
+      placements: ['gnb', 'sitemap', 'structure'],
+      dropdownKey: 'bk',
+      cols: 3,
+      adminPages: ['booking', 'reqconsult', 'reqexam', 'reqpartner'],
+      groups: [
+        { label: '일반 고객', items: [{ label: '상담 신청', page: 'reqconsult' }, { label: '검사 예약', page: 'reqexam' }] },
+        { label: '제휴 고객', items: [{ label: '제휴·협력 안내', page: 'partners' }, { label: '제휴고객 예약', page: 'reqpartner' }] },
+        { label: '상담 채널', items: [{ label: '전화 상담', page: 'stub' }, { label: '카카오톡 상담 ↗', page: 'stub' }, { label: 'AI 챗봇 상담', page: 'stub' }] },
+      ],
+    },
+    {
+      id: 'events',
+      no: '05',
+      label: '이벤트',
+      page: 'events',
+      path: '/events',
+      owner: 'pages/events',
+      placements: ['gnb', 'sitemap', 'structure'],
+      adminPages: ['events'],
+      groups: [
+        { label: '프로모션', items: [{ label: '이벤트 목록', page: 'events' }, { label: '이벤트 상세 → 상담', page: 'reqconsult' }] },
+      ],
+    },
+    {
+      id: 'mypage',
+      no: '06',
+      label: '마이페이지',
+      page: 'mypage',
+      path: '/mypage',
+      owner: 'features/auth + features/mypage',
+      placements: ['gnb', 'sitemap', 'structure'],
+      adminPages: ['login', 'signup', 'mypage', 'acct', 'reserve', 'review', 'voice', 'consult'],
+      lnb: [
+        ['acct', '계정 정보'], ['reserve', '예약 · 주의사항'], ['review', '후기 작성'], ['voice', '고객의 소리'], ['consult', '상담 내역'],
+      ],
+      groups: [
+        { label: '로그인 · 회원', items: [{ label: '로그인', page: 'login' }, { label: '소셜 로그인', page: 'login' }, { label: '회원가입', page: 'signup' }] },
+        { label: '나의 정보', items: [{ label: '로그인 · 계정 정보', page: 'acct' }, { label: '예약 · 주의사항', page: 'reserve' }, { label: '후기 작성', page: 'review' }, { label: '고객의 소리', page: 'voice' }, { label: '상담 내역', page: 'consult' }] },
+      ],
+    },
+  ]
+
+  root.BNVIIT_SITE_MENU = {
+    version: '2026-07-10',
+    sections,
+  }
+})(typeof globalThis !== 'undefined' ? globalThis : this)

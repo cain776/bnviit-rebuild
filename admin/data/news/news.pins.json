@@ -1,0 +1,8 @@
+{
+  "_comment": "소식 상단 고정 id 목록(단일 소스). 관리자에서 고정을 조정한 뒤 이 배열을 갱신하고 tools/export-front-news.cjs(프런트)·import-legacy-news.cjs(스냅샷 재생성) 재실행 시 반영됩니다. 재-import(레거시 DB)에도 이 목록이 유지됩니다.",
+  "pinnedIds": [
+    "legacy-news-27776",
+    "legacy-news-151",
+    "legacy-news-20054"
+  ]
+}

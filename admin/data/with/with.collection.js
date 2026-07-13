@@ -1,0 +1,920 @@
+/* 자동 생성 — 로컬 레거시 DB 백업의 글로벌 후기(TBL_WITH_FR · with/clients.php) 실데이터.
+   원본: 로컬 백업 DB · TBL_WITH_FR / 백업일 2026-07-10. 고객후기(reviews) 뷰에 '글로벌 후기' 탭으로 등록. */
+(function () {
+  'use strict'
+  var C = window.BNVIIT_CMS_COLLECTIONS
+  if (!C || !C.collections || !C.views) return
+  var snapshot = {
+  "formatVersion": 1,
+  "dataset": "bnviit-with",
+  "dataVersion": "legacy-tbl-with-fr-20260710-v1",
+  "generatedAt": "2026-07-11T09:18:49.465Z",
+  "source": {
+    "label": "로컬 백업 DB · TBL_WITH_FR",
+    "kind": "local-backup",
+    "database": "bseyecom_db",
+    "table": "TBL_WITH_FR",
+    "backupDate": "2026-07-10",
+    "dumpFile": "db/bseyecom_full_20260710.sql.gz",
+    "serverAccess": false,
+    "imageSupplement": "백업에 없는 사진은 www.bnviit.com/upload_data/with_fr/ 에서 내려받아 로컬 복사본으로 보관",
+    "rowFilter": "DEL_TF = 'N'",
+    "orderBy": "USE_TF DESC, DISP_SEQ ASC, REG_DATE DESC",
+    "phpReferences": [
+      "글로벌 사이트(english/chinese/japanese.bnviit.com)의 With B&VIIT 의료진 소감 화면 (환자 후기 with/clients.php와는 별개)",
+      "www/manager/with_fr/with_write.php (이름·소감·이미지·비앤빛 메인·공개여부·언어)",
+      "www/_classes/biz/with_fr/with.php::listWith (컬럼·정렬)"
+    ]
+  },
+  "schema": {
+    "legacyColumns": [
+      {
+        "name": "SEQ_NO",
+        "definition": "`SEQ_NO` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'SEQ'"
+      },
+      {
+        "name": "LANG",
+        "definition": "`LANG` varchar(20) DEFAULT NULL COMMENT '언어'"
+      },
+      {
+        "name": "NAME",
+        "definition": "`NAME` varchar(150) NOT NULL DEFAULT '' COMMENT '성명'"
+      },
+      {
+        "name": "INFO_01",
+        "definition": "`INFO_01` text DEFAULT NULL COMMENT '정보1'"
+      },
+      {
+        "name": "INFO_02",
+        "definition": "`INFO_02` text DEFAULT NULL COMMENT '정보2'"
+      },
+      {
+        "name": "INFO_03",
+        "definition": "`INFO_03` text DEFAULT NULL COMMENT '정보3'"
+      },
+      {
+        "name": "INFO_04",
+        "definition": "`INFO_04` text DEFAULT NULL COMMENT '정보4'"
+      },
+      {
+        "name": "THUMB_IMG",
+        "definition": "`THUMB_IMG` varchar(150) DEFAULT NULL"
+      },
+      {
+        "name": "HIT_CNT",
+        "definition": "`HIT_CNT` int(11) DEFAULT 0"
+      },
+      {
+        "name": "DISP_SEQ",
+        "definition": "`DISP_SEQ` int(11) DEFAULT 0 COMMENT '노출순서'"
+      },
+      {
+        "name": "MAIN_TF",
+        "definition": "`MAIN_TF` char(1) NOT NULL DEFAULT 'Y' COMMENT '메인노출 여부 사용(Y),사용안함(N)'"
+      },
+      {
+        "name": "USE_TF",
+        "definition": "`USE_TF` char(1) NOT NULL DEFAULT 'Y' COMMENT '사용\t여부 사용(Y),사용안함(N)'"
+      },
+      {
+        "name": "DEL_TF",
+        "definition": "`DEL_TF` char(1) NOT NULL DEFAULT 'N' COMMENT '삭제\t여부 삭제(Y),사용(N)'"
+      },
+      {
+        "name": "REG_ADM",
+        "definition": "`REG_ADM` int(11) unsigned DEFAULT NULL COMMENT '등록\t관리자 일련번호 TBL_ADMIN ADM_NO'"
+      },
+      {
+        "name": "REG_DATE",
+        "definition": "`REG_DATE` datetime DEFAULT NULL COMMENT '등록일'"
+      },
+      {
+        "name": "UP_ADM",
+        "definition": "`UP_ADM` int(11) unsigned DEFAULT NULL COMMENT '수정\t관리자 일련번호 TBL_ADMIN ADM_NO'"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "`UP_DATE` datetime DEFAULT NULL COMMENT '수정일'"
+      },
+      {
+        "name": "DEL_ADM",
+        "definition": "`DEL_ADM` int(11) unsigned DEFAULT NULL COMMENT '삭제\t관리자 일련번호 TBL_ADMIN ADM_NO'"
+      },
+      {
+        "name": "DEL_DATE",
+        "definition": "`DEL_DATE` datetime DEFAULT NULL COMMENT '삭제일'"
+      }
+    ],
+    "fieldMap": [
+      {
+        "legacy": "SEQ_NO",
+        "json": "legacyNo",
+        "type": "integer",
+        "purpose": "레거시 식별자"
+      },
+      {
+        "legacy": "LANG",
+        "json": "lang",
+        "type": "string",
+        "purpose": "노출 언어(라벨 변환, 원본은 legacyLang 보존)"
+      },
+      {
+        "legacy": "NAME",
+        "json": "name",
+        "type": "string",
+        "purpose": "이름·소속"
+      },
+      {
+        "legacy": "INFO_01",
+        "json": "body",
+        "type": "text",
+        "purpose": "소감"
+      },
+      {
+        "legacy": "THUMB_IMG",
+        "json": "photo",
+        "type": "asset-path",
+        "purpose": "사진의 로컬 복사본"
+      },
+      {
+        "legacy": "MAIN_TF",
+        "json": "main",
+        "type": "boolean",
+        "purpose": "비앤빛 메인 노출 여부"
+      },
+      {
+        "legacy": "USE_TF",
+        "json": "use",
+        "type": "boolean",
+        "purpose": "공개 여부"
+      },
+      {
+        "legacy": "HIT_CNT",
+        "json": "hit",
+        "type": "integer",
+        "purpose": "조회수"
+      },
+      {
+        "legacy": "DISP_SEQ",
+        "json": "legacyDispSeq",
+        "type": "integer",
+        "purpose": "레거시 노출 순서"
+      },
+      {
+        "legacy": "REG_DATE",
+        "json": "reg",
+        "type": "date",
+        "purpose": "등록일"
+      },
+      {
+        "legacy": "UP_DATE",
+        "json": "upd",
+        "type": "date",
+        "purpose": "수정일"
+      },
+      {
+        "legacy": "DEL_TF",
+        "json": null,
+        "type": "filter",
+        "purpose": "N인 행만 JSON rows에 포함"
+      }
+    ],
+    "excludedSensitiveColumns": [
+      "REG_ADM",
+      "UP_ADM",
+      "DEL_ADM"
+    ],
+    "langLabels": {
+      "ENG": "영어",
+      "CHN": "중국어",
+      "JPN": "일본어",
+      "VTN": "베트남어"
+    },
+    "note": "글로벌 사이트 \"With B&VIIT\" 해외 의료진 소감입니다. 언어 코드(ENG/CHN/JPN/VTN)는 라벨로 변환하고 원본은 legacyLang에 보존합니다."
+  },
+  "stats": {
+    "totalCount": 32,
+    "activeCount": 32,
+    "deletedCount": 0,
+    "publicCount": 32,
+    "imageCount": 32,
+    "imageFromBackup": 0,
+    "imageFromCache": 32,
+    "imageFromLive": 0,
+    "imageUnresolved": []
+  },
+  "langs": [
+    "베트남어",
+    "일본어",
+    "중국어",
+    "영어"
+  ],
+  "rows": [
+    {
+      "id": "legacy-with-32",
+      "seq": 1,
+      "photo": "data/with/images/with-32.jpg",
+      "legacyNo": 32,
+      "legacyLang": "VTN",
+      "legacyDispSeq": 0,
+      "lang": "베트남어",
+      "name": "Tiến sĩ Guy Kezirian (MD, MBA / Người sáng lập RSA)",
+      "body": "Viện mắt B&VIIT thật sự là tương lai của thị trường y tế nhãn khoa.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2026-03-12",
+      "upd": "2026-03-17",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-31",
+      "seq": 2,
+      "photo": "data/with/images/with-31.jpg",
+      "legacyNo": 31,
+      "legacyLang": "VTN",
+      "legacyDispSeq": 0,
+      "lang": "베트남어",
+      "name": "Tiến sĩ Anthony Grillo (Viện Pacific ClearVision, Hoa Kỳ)",
+      "body": "11 bác sĩ nhãn khoa và 150 nhân viên y tế phối hợp nhịp nhàng như một dàn nhạc để cung cấp dịch vụ y tế tốt nhất.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2026-03-12",
+      "upd": "2026-03-17",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-30",
+      "seq": 3,
+      "photo": "data/with/images/with-30.jpg",
+      "legacyNo": 30,
+      "legacyLang": "VTN",
+      "legacyDispSeq": 0,
+      "lang": "베트남어",
+      "name": "Tiến sĩ Roger Saldivar, MBA (Chủ tịch RSA / Instituto Saldivar SA, Argentina)",
+      "body": "Hệ thống này được tổ chức rất chặt chẽ, mỗi thành viên đều chịu trách nhiệm về vai trò của mình. Thông tin được kiểm tra kỹ lưỡng nhiều lần để đảm bảo tính chính xác. Dựa trên các hệ thống và năng lực toàn diện này, B&VIIT có vị thế tốt để mở rộng kinh doanh trên khắp Hàn Quốc và châu Á.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2026-03-12",
+      "upd": "2026-03-17",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-29",
+      "seq": 4,
+      "photo": "data/with/images/with-29.jpg",
+      "legacyNo": 29,
+      "legacyLang": "VTN",
+      "legacyDispSeq": 0,
+      "lang": "베트남어",
+      "name": "Bác sĩ William Schiff, OD (Trung tâm Nhãn khoa Barnett Duraney Perkins, Hoa Kỳ)",
+      "body": "Công nghệ trí tuệ nhân tạo của B&VIIT thực sự mang tính đột phá và sẽ sớm được ứng dụng trong lĩnh vực y tế.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2026-03-12",
+      "upd": "2026-03-17",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-28",
+      "seq": 5,
+      "photo": "data/with/images/with-28.jpg",
+      "legacyNo": 28,
+      "legacyLang": "VTN",
+      "legacyDispSeq": 0,
+      "lang": "베트남어",
+      "name": "Tiến sĩ Gregory Parkhurst (Parkhurst New Vision, Hoa Kỳ)",
+      "body": "Trung tâm Nhãn khoa B&VIIT chắc chắn là một trung tâm đạt tiêu chuẩn tối cao trên thế giới. Tôi đã đến thăm nhiều trung tâm trên khắp thế giới, và trung tâm này nổi bật hơn hẳn. Tôi thật sự rất ngạc nhiên. Tôi cảm nhận rõ rệt được sự tận tâm của toàn bộ đội ngũ đối với chất lượng và sự an toàn. Rõ ràng là mọi quy trình và chi tiết đều được lên kế hoạch tỉ mỉ từ trước.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2026-03-12",
+      "upd": "2026-03-17",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-27",
+      "seq": 6,
+      "photo": "data/with/images/with-27.jpg",
+      "legacyNo": 27,
+      "legacyLang": "VTN",
+      "legacyDispSeq": 0,
+      "lang": "베트남어",
+      "name": "Tiến sĩ Andrea Russo (Trung tâm Oculistico Bresciano, Ý)",
+      "body": "B&VIIT là một bước tiến vào tương lai. Tôi rất ấn tượng với cả cách họ phát triển hệ thống AI và cách họ thu thập dữ liệu từ nhiều thiết bị khác nhau. Tôi tin rằng B&VIIT đang triển khai mọi thứ cần thiết hiện nay trong lĩnh vực này. Hệ thống AI này rất có giá trị vì nó có thể cung cấp cho bệnh nhân nhiều lựa chọn khác nhau. Nếu PRK là phương pháp duy nhất được thực hiện, thì sẽ không có lý do gì để có một hệ thống như vậy. Tuy nhiên, B&VIIT cung cấp đầy đủ các lựa chọn, từ PRK đến SMILE, thay thế thủy tinh thể khúc xạ và ICL. Điều này làm tăng đáng kể giá trị của việc điều trị. Tôi cũng rất ấn tượng với chất lượng cao của việc lựa chọn chỉ định phẫu thuật của họ, thậm chí bao gồm cả xét ngh",
+      "main": true,
+      "use": true,
+      "hit": 0,
+      "reg": "2026-03-12",
+      "upd": "2026-03-17",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-26",
+      "seq": 7,
+      "photo": "data/with/images/with-26.jpg",
+      "legacyNo": 26,
+      "legacyLang": "VTN",
+      "legacyDispSeq": 0,
+      "lang": "베트남어",
+      "name": "Tiến sĩ R. Luke Rebenich (Trung tâm ClearSight, Hoa Kỳ)",
+      "body": "B&VIIT thực sự là một nơi tuyệt vời. Tôi chưa từng thấy một trung tâm nào tỉ mỉ đến từng chi tiết và tận tâm đến vậy trong việc đạt được kết quả hoàn hảo, an toàn trong điều chỉnh thị lực. Đây thực sự là một cơ sở có tiêu chuẩn thế giới. Tôi hy vọng B&VIIT sẽ được biết đến rộng rãi hơn trên toàn thế giới. Tôi tin rằng nó sẽ trở thành một địa điểm lý tưởng và một điểm đến tuyệt vời cho du lịch y tế trong tương lai.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2026-03-12",
+      "upd": "2026-03-17",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-25",
+      "seq": 8,
+      "photo": "data/with/images/with-25.jpg",
+      "legacyNo": 25,
+      "legacyLang": "VTN",
+      "legacyDispSeq": 0,
+      "lang": "베트남어",
+      "name": "Tiến sĩ Josef Stoiber (Trung tâm Nhãn khoa Amadeus, Áo) và vợ ông, Christine",
+      "body": "Mọi người ở B&VIIT đều vô cùng tốt bụng và thân thiện đến ngạc nhiên. Tôi rất ấn tượng với trình độ chuyên nghiệp cao của toàn bộ nhân viên và bác sĩ làm việc tại đây. Đây sẽ là một trải nghiệm tuyệt vời và khó quên. Viện mắt B&VIIT thực sự hoàn hảo.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2026-03-12",
+      "upd": "2026-03-17",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-24",
+      "seq": 9,
+      "photo": "data/with/images/with-24.jpg",
+      "legacyNo": 24,
+      "legacyLang": "JPN",
+      "legacyDispSeq": 0,
+      "lang": "일본어",
+      "name": "ガイ・ケジリアン 医師（医学博士／経営学修士、RSA創設者）",
+      "body": "B&VIIT（ビエンビット）眼科は、まさに眼科医療市場の未来です。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2025-08-11",
+      "upd": "2025-08-11",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-23",
+      "seq": 10,
+      "photo": "data/with/images/with-23.jpg",
+      "legacyNo": 23,
+      "legacyLang": "JPN",
+      "legacyDispSeq": 0,
+      "lang": "일본어",
+      "name": "アントニー・グリロ 医師（Pacific ClearVision Institute、米国）",
+      "body": "11名の眼科専門医と150名の医療スタッフが、まるでオーケストラのように調和し、一体となって最高の医療サービスを提供しています。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2025-08-11",
+      "upd": "2025-08-11",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-22",
+      "seq": 11,
+      "photo": "data/with/images/with-22.jpg",
+      "legacyNo": 22,
+      "legacyLang": "JPN",
+      "legacyDispSeq": 0,
+      "lang": "일본어",
+      "name": "ロジェ・サルディバル 医師、MBA（RSA会長／インスティトゥート・サルディバル SA、アルゼンチン）",
+      "body": "非常に体系的で、それぞれが自分の役割を担っています。情報が正確であるかを何度も確認します。このようなシステムと総合的な能力により、B&VIITは韓国全土やアジア全域へと事業を拡大していくための非常に良好な体制を整えています。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2025-08-11",
+      "upd": "2025-08-11",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-21",
+      "seq": 12,
+      "photo": "data/with/images/with-21.jpg",
+      "legacyNo": 21,
+      "legacyLang": "JPN",
+      "legacyDispSeq": 0,
+      "lang": "일본어",
+      "name": "ウィリアム・シフ 医師、OD（バーネット・デュラニー・パーキンス眼科センター、米国）",
+      "body": "B&VIITのAIはまさに革命的であり、近い将来、医療分野において実装されるでしょう。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2025-08-11",
+      "upd": "2025-08-11",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-20",
+      "seq": 13,
+      "photo": "data/with/images/with-20.jpg",
+      "legacyNo": 20,
+      "legacyLang": "JPN",
+      "legacyDispSeq": 0,
+      "lang": "일본어",
+      "name": "グレゴリー・パークハースト 医師（パークハースト・ニュービジョン、米国）",
+      "body": "B&VIITアイセンターは、間違いなく世界トップクラスの施設です。世界中のさまざまな場所を訪れましたが、ここは私が見てきた中でも最高の部類に入ります。本当に素晴らしいです。チーム全体が一貫して品質と安全を重視していることが明確に伝わってきます。すべてのプロセスと細部に至るまで事前にしっかりと計画されていることが明らかです。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2025-08-11",
+      "upd": "2025-08-11",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-19",
+      "seq": 14,
+      "photo": "data/with/images/with-19.jpg",
+      "legacyNo": 19,
+      "legacyLang": "JPN",
+      "legacyDispSeq": 0,
+      "lang": "일본어",
+      "name": "アンドレア・ルッソ 医師（Centro Oculistico Bresciano、イタリア）",
+      "body": "B&VIITは未来への一歩です。AIシステムの開発方法と、さまざまな機器からデータを収集する方法の両方に非常に感銘を受けました。B&VIITは、この分野で今必要とされるすべてのことを実行していると思います。このAIシステムは、患者に多様な選択肢を提供できるからこそ価値があります。もしPRKしか行わないのであれば、このようなシステムを持つ意味はありません。しかしB&VIITはPRKからSMILE、屈折矯正レンズ交換術、ICLまで、あらゆる選択肢を提供しています。これにより診療の価値は大幅に高まります。さらに、DNA検査まで含めた手術適応選択の高い品質に強く感銘を受けました。",
+      "main": true,
+      "use": true,
+      "hit": 0,
+      "reg": "2025-08-11",
+      "upd": "-",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-18",
+      "seq": 15,
+      "photo": "data/with/images/with-18.jpg",
+      "legacyNo": 18,
+      "legacyLang": "JPN",
+      "legacyDispSeq": 0,
+      "lang": "일본어",
+      "name": "R・ルーク・レベニッチ 医師（ClearSight Center、米国）",
+      "body": "B&VIITは本当に素晴らしい施設です。これほど細部までこだわり、視力矯正の完璧で安全な結果にこれほどまで献身しているセンターは今まで訪れたことがありません。まさに世界水準の施設です。B&VIITが世界的にもっと広く宣伝されればいいのにと思います。将来的に、ここは医療観光において理想的な場所、素晴らしい目的地になるはずです。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2025-08-11",
+      "upd": "2025-08-11",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-17",
+      "seq": 16,
+      "photo": "data/with/images/with-17.jpg",
+      "legacyNo": 17,
+      "legacyLang": "JPN",
+      "legacyDispSeq": 0,
+      "lang": "일본어",
+      "name": "ヨーゼフ・シュトイバー 医師（アマデウス眼科センター、オーストリア）と夫人 クリスティーネ",
+      "body": "B&VIITの皆さんは本当に信じられないほど親切です。ここで働くすべてのスタッフと医師が非常に高い専門性を持っているという印象を受けました。これは素晴らしい印象と経験になるでしょう。B&VIIT眼科はまさに完璧そのものです。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2025-08-11",
+      "upd": "2025-08-11",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-16",
+      "seq": 17,
+      "photo": "data/with/images/with-16.jpg",
+      "legacyNo": 16,
+      "legacyLang": "CHN",
+      "legacyDispSeq": 0,
+      "lang": "중국어",
+      "name": "Guy Kezirian（医学博士+工商管理硕士）（RSA的创建人）",
+      "body": "B&VIIT实为眼科市场的未来之星。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-15",
+      "upd": "-",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-15",
+      "seq": 18,
+      "photo": "data/with/images/with-15.jpg",
+      "legacyNo": 15,
+      "legacyLang": "CHN",
+      "legacyDispSeq": 0,
+      "lang": "중국어",
+      "name": "Antony Grillo医学博士（美国太平洋ClearVision 研究所）",
+      "body": "11位眼科医师和150位医护人员倾力配合，为您提供最佳医疗服务。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-15",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-14",
+      "seq": 19,
+      "photo": "data/with/images/with-14.jpg",
+      "legacyNo": 14,
+      "legacyLang": "CHN",
+      "legacyDispSeq": 0,
+      "lang": "중국어",
+      "name": "Roger Zaldivar（医学博士+工商管理学硕士）（RSA/ Insituto Zaldivar SA主席）",
+      "body": "整体分工明确，每个人各司其职。工作人员会多次核查信息是否正确， 凭借这个系统和所有功能，B&VIIT足以扩展到整合韩国，甚至是亚洲。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-15",
+      "upd": "-",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-13",
+      "seq": 20,
+      "photo": "data/with/images/with-13.jpg",
+      "legacyNo": 13,
+      "legacyLang": "CHN",
+      "legacyDispSeq": 0,
+      "lang": "중국어",
+      "name": "William Schiff（运营总监）（美国Barnet Dulaney Perkins眼科中心）",
+      "body": "B&VIIT AI不断革新，在不远的将来会运用于整个医学界。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-15",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-12",
+      "seq": 21,
+      "photo": "data/with/images/with-12.jpg",
+      "legacyNo": 12,
+      "legacyLang": "CHN",
+      "legacyDispSeq": 0,
+      "lang": "중국어",
+      "name": "Gregory Parkhurst（医学博士）（美国Parkhurst NuVision）",
+      "body": "毫无疑问，B&VIIT眼科中心是面向世界的。我去过不少国家，这里是 我见过最好的中心之一。让人惊叹！",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-15",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-11",
+      "seq": 22,
+      "photo": "data/with/images/with-11.jpg",
+      "legacyNo": 11,
+      "legacyLang": "CHN",
+      "legacyDispSeq": 0,
+      "lang": "중국어",
+      "name": "Andrea Russo（医学博士+哲学博士）（意大利Centro Oculistico Bresciano）",
+      "body": "B&VIIT是迈向未来的阶梯。我对于你们创造这个AI系统和可以将所有 不同设备上的资料整合到一起的方式感到无比惊叹。我认为B&VIIT填 补了这个行业当下的空缺。如果可以向患者提供更多的选择，那么这 个AI系统就有存在的意义。如果您只选择做PRK，那么这个系统就有 点大材小用了。因此，您基本上可以进行从PRK到SMILE或屈光镜片 更换或ICL的所有操作。所有选择均为您呈现，增加了很多实践价值。 我深信高质量手术选择（包含DNA测试）非常有趣！",
+      "main": true,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-15",
+      "upd": "-",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-10",
+      "seq": 23,
+      "photo": "data/with/images/with-10.jpg",
+      "legacyNo": 10,
+      "legacyLang": "CHN",
+      "legacyDispSeq": 0,
+      "lang": "중국어",
+      "name": "R. Luke Rebenitsch（医学博士）（美国ClearSight Center）",
+      "body": "B&VIIT非常不可思议。我从未见过对细节如此深究的中心，力求完 美和视力矫正的安全结局。这确实是世界级的机构。我希望B&VIIT 在世界范围多做宣传，因为这确实是一个未来医疗旅游的理想之选。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-15",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-9",
+      "seq": 24,
+      "photo": "data/with/images/with-9.jpg",
+      "legacyNo": 9,
+      "legacyLang": "CHN",
+      "legacyDispSeq": 0,
+      "lang": "중국어",
+      "name": "Josef Stoiber（医学博士+哲学博士）（澳大利亚Amadeus Eye Center）和其妻子Christine",
+      "body": "B&VIIT的人们都非常友好。我们对这里的印象是所有人们都具有很高 的水平。",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-15",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-8",
+      "seq": 25,
+      "photo": "data/with/images/with-8.jpg",
+      "legacyNo": 8,
+      "legacyLang": "ENG",
+      "legacyDispSeq": 0,
+      "lang": "영어",
+      "name": "Guy Kezirian, MD, MBA(Founder, RSA)",
+      "body": "B&VIIT Eye Center is truly the future of the ophthalmology market.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-14",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-7",
+      "seq": 26,
+      "photo": "data/with/images/with-7.jpg",
+      "legacyNo": 7,
+      "legacyLang": "ENG",
+      "legacyDispSeq": 1,
+      "lang": "영어",
+      "name": "Antony Grillo MD(Pacific ClearVision Institute, US)",
+      "body": "11 ophthalmologists and 150 medical staff members are harmonized and well-played like an orchestra to provide best medical services.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-14",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-6",
+      "seq": 27,
+      "photo": "data/with/images/with-6.jpg",
+      "legacyNo": 6,
+      "legacyLang": "ENG",
+      "legacyDispSeq": 2,
+      "lang": "영어",
+      "name": "Roger Zaldivar, MD, MBA(President, RSA / Insituto Zaldivar SA, Argentina)",
+      "body": "Very structured and everyone has their own roles. They check many times to see the information is correct. With this system and with all of the capabilities, B&VIIT is in a very good shape to scale to be all over Korea or in Asia.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-14",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-5",
+      "seq": 28,
+      "photo": "data/with/images/with-5.jpg",
+      "legacyNo": 5,
+      "legacyLang": "ENG",
+      "legacyDispSeq": 3,
+      "lang": "영어",
+      "name": "William Schiff, OD(Barnet Dulaney Perkins Eye Center, US)",
+      "body": "B&VIIT AI is really revolutionizing, and it will be implemented through medicine in the very near future.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-14",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-4",
+      "seq": 29,
+      "photo": "data/with/images/with-4.jpg",
+      "legacyNo": 4,
+      "legacyLang": "ENG",
+      "legacyDispSeq": 4,
+      "lang": "영어",
+      "name": "Gregory Parkhurst, MD(Parkhurst NuVision, US)",
+      "body": "B&VIIT Eye Center is a world-class center for sure. I’ve visited several places around the world and this is one of the best I’ve ever seen. It’s amazing! It's very clear that the whole team is under the around quality and safety. And it is very obvious that all the processes and all the details have been thought out ahead of time.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-14",
+      "upd": "2020-08-18",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-3",
+      "seq": 30,
+      "photo": "data/with/images/with-3.jpg",
+      "legacyNo": 3,
+      "legacyLang": "ENG",
+      "legacyDispSeq": 5,
+      "lang": "영어",
+      "name": "Andrea Russo, MD, PhD(Centro Oculistico Bresciano, Italy)",
+      "body": "B&VIIT is a step into the future. I was very impressed by the technology you developed in both way you created this AI system and the way you are able to gather the data from all those different equipment. I think B&VIIT is doing all that is needed to be done now in this field. This AI system has a sense if you can offer many options to the patients. If you only do PRK, it’s sense less to have such systems behind you. So you basically do everything ranging from PRK to SMILE or refractive lens exchange, or ICL. You have all the options on the table, which increases a lot of value of the practice.I perceived the high quality of surgery selection even DNA testing which is really fantastic!",
+      "main": true,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-14",
+      "upd": "2020-08-20",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-2",
+      "seq": 31,
+      "photo": "data/with/images/with-2.jpg",
+      "legacyNo": 2,
+      "legacyLang": "ENG",
+      "legacyDispSeq": 6,
+      "lang": "영어",
+      "name": "R. Luke Rebenitsch, MD(ClearSight Center, US)",
+      "body": "B&VIIT is incredible. I’ve never been to the center that is so detailed oriented, that is so dedicated to the perfect and safe outcome of vision correction. This is truly a world-class facility. I wish B&VIIT was more advertised worldwide because I think this should be wonderful place or ideal place for medical tourism in the future.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-14",
+      "upd": "2020-08-15",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    },
+    {
+      "id": "legacy-with-1",
+      "seq": 32,
+      "photo": "data/with/images/with-1.jpg",
+      "legacyNo": 1,
+      "legacyLang": "ENG",
+      "legacyDispSeq": 7,
+      "lang": "영어",
+      "name": "Josef Stoiber, MD, PD(Amadeus Eye Center, Austria) and his wife, Christine",
+      "body": "All the people at B&VIIT are incredibly friendly. We got the impression that it has very high competence of all the people who work here and all the doctors. It's going to be incredible impression and experience. B&VIIT Eye Center is pure perfection.",
+      "main": false,
+      "use": true,
+      "hit": 0,
+      "reg": "2020-08-14",
+      "upd": "2020-08-18",
+      "sourceVersion": "legacy-tbl-with-fr-20260710-v1"
+    }
+  ]
+}
+  var def = {
+  "tab": "글로벌 의료진",
+  "title": "글로벌 의료진 소감 관리",
+  "singular": "의료진 소감",
+  "legacy": "With B&VIIT · TBL_WITH_FR",
+  "description": "",
+  "searchPlaceholder": "이름 또는 소감 검색",
+  "searchKeys": [
+    "name",
+    "body"
+  ],
+  "filters": [
+    {
+      "id": "lang",
+      "label": "언어",
+      "field": "lang",
+      "kind": "text",
+      "options": [
+        "전체",
+        "베트남어",
+        "일본어",
+        "중국어",
+        "영어"
+      ]
+    },
+    {
+      "id": "use",
+      "label": "공개여부",
+      "field": "use",
+      "kind": "bool",
+      "options": [
+        "전체",
+        "공개",
+        "숨김"
+      ]
+    }
+  ],
+  "columns": [
+    {
+      "key": "seq",
+      "label": "순서",
+      "type": "order"
+    },
+    {
+      "key": "photo",
+      "label": "사진",
+      "type": "thumb"
+    },
+    {
+      "key": "name",
+      "label": "이름 · 소속",
+      "type": "title"
+    },
+    {
+      "key": "lang",
+      "label": "언어",
+      "type": "tag"
+    },
+    {
+      "key": "body",
+      "label": "소감",
+      "type": "text"
+    },
+    {
+      "key": "main",
+      "label": "메인",
+      "type": "toggle",
+      "on": "노출",
+      "off": "-"
+    },
+    {
+      "key": "use",
+      "label": "공개",
+      "type": "toggle",
+      "on": "공개",
+      "off": "숨김"
+    },
+    {
+      "key": "reg",
+      "label": "등록일",
+      "type": "date"
+    }
+  ],
+  "fields": [
+    {
+      "key": "photo",
+      "label": "사진 (썸네일)",
+      "type": "image",
+      "full": true,
+      "code": "thumb_img"
+    },
+    {
+      "key": "name",
+      "label": "이름 · 소속",
+      "type": "text",
+      "full": true,
+      "code": "name",
+      "required": true
+    },
+    {
+      "key": "lang",
+      "label": "노출 언어",
+      "type": "select",
+      "options": [
+        "베트남어",
+        "일본어",
+        "중국어",
+        "영어"
+      ],
+      "code": "lang"
+    },
+    {
+      "key": "body",
+      "label": "소감",
+      "type": "textarea",
+      "full": true,
+      "code": "info_01"
+    },
+    {
+      "key": "main",
+      "label": "비앤빛 메인 노출",
+      "type": "toggle",
+      "on": "노출",
+      "off": "사용안함",
+      "code": "main_tf"
+    },
+    {
+      "key": "use",
+      "label": "공개여부",
+      "type": "toggle",
+      "on": "공개",
+      "off": "숨김",
+      "code": "use_tf"
+    },
+    {
+      "key": "hit",
+      "label": "조회수",
+      "type": "number",
+      "code": "hit_cnt"
+    },
+    {
+      "key": "reg",
+      "label": "등록일",
+      "type": "readonly",
+      "code": "reg_date"
+    },
+    {
+      "key": "upd",
+      "label": "수정일",
+      "type": "readonly",
+      "code": "up_date"
+    }
+  ],
+  "rows": []
+}
+  def.dataVersion = snapshot.dataVersion
+  def.description = '글로벌 사이트(english/chinese/japanese.bnviit.com) With B&VIIT 화면에서 이관한 해외 의료진 소감 ' + snapshot.stats.activeCount + '건입니다. 환자 후기(Patient Testimonials)는 별도의 글로벌 후기 탭에서 관리합니다. 백업일은 ' + snapshot.source.backupDate + '입니다.'
+  def.rows = snapshot.rows
+  def.snapshotMeta = { source: snapshot.source.label, backupDate: snapshot.source.backupDate, activeCount: snapshot.stats.activeCount }
+  C.collections.withReviews = def
+  if (Array.isArray(C.views.reviews) && C.views.reviews.indexOf('withReviews') < 0) C.views.reviews.push('withReviews')
+})()
