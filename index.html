@@ -15,8 +15,11 @@
         width: 100%;
         height: 100%;
         margin: 0;
-        overflow: hidden;
         background: #fff;
+      }
+
+      body.frontpage-mode {
+        overflow: hidden;
       }
 
       .frontpage {
@@ -26,13 +29,106 @@
         border: 0;
         background: #fff;
       }
+
+      .proto-link {
+        position: fixed;
+        left: 12px;
+        bottom: 12px;
+        z-index: 2147483647;
+        font: 12px/1
+          -apple-system,
+          BlinkMacSystemFont,
+          "Pretendard Variable",
+          sans-serif;
+        color: #6b7280;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 999px;
+        padding: 7px 12px;
+        text-decoration: none;
+        opacity: 0.45;
+        transition: opacity 0.15s ease;
+      }
+
+      .proto-link:hover,
+      .proto-link:focus-visible {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
-    <iframe
-      class="frontpage"
-      src="./frontpage.html"
-      title="비앤빛안과 프런트페이지"
-    ></iframe>
+    <!-- SPA 마운트 지점. 와이어프레임 모드에서는 비어 있는 채로 둡니다. -->
+    <div id="root"></div>
+
+    <noscript>
+      <p style="font: 14px/1.6 sans-serif; padding: 24px">
+        이 페이지는 JavaScript가 필요합니다.
+        <a href="./frontpage.html">와이어프레임 직접 열기</a>
+      </p>
+    </noscript>
+
+    <script>
+      // 이 저장소는 Vite 빌드 산출물 배포 전용이고, SPA 라우터는
+      // basename="/bnviit-rebuild" 로 고정돼 있습니다. 즉 SPA 홈은 pathname이
+      // 정확히 "/bnviit-rebuild/" 일 때만 매칭됩니다 — 신규 와이어프레임이
+      // 차지한 바로 그 주소입니다. 그래서 경로를 나누는 대신 같은 경로에서
+      // 쿼리로 분기시킵니다. pathname 이 그대로라 SPA 라우팅과 딥링크가
+      // 전부 원래대로 동작합니다.
+      //
+      //   /bnviit-rebuild/        → 신규 와이어프레임 (기본)
+      //   /bnviit-rebuild/?spa    → 기존 React 프로토타입 홈
+      //   /bnviit-rebuild/booking → 404.html 폴백 경유로 기존 프로토타입 (변경 없음)
+      (function () {
+        var SPA_JS = "/bnviit-rebuild/assets/index-Bjtsl29Z.js";
+        var SPA_CSS = "/bnviit-rebuild/assets/index-CAh33gx4.css";
+        var FONT_CSS =
+          "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css";
+
+        var wantsSpa =
+          /[?&]spa(?:[=&]|$)/.test(window.location.search) ||
+          window.location.hash === "#spa";
+
+        if (wantsSpa) {
+          bootSpa();
+        } else {
+          showFrontpage();
+        }
+
+        function bootSpa() {
+          addStylesheet(FONT_CSS, false);
+          addStylesheet(SPA_CSS, true);
+
+          var s = document.createElement("script");
+          s.type = "module";
+          s.crossOrigin = "anonymous";
+          s.src = SPA_JS;
+          document.body.appendChild(s);
+        }
+
+        function showFrontpage() {
+          document.body.classList.add("frontpage-mode");
+
+          var frame = document.createElement("iframe");
+          frame.className = "frontpage";
+          frame.title = "비앤빛안과 프런트페이지";
+          frame.src = "./frontpage.html";
+          document.body.appendChild(frame);
+
+          var link = document.createElement("a");
+          link.className = "proto-link";
+          link.href = "?spa";
+          link.textContent = "기존 프로토타입 보기";
+          document.body.appendChild(link);
+        }
+
+        function addStylesheet(href, crossOrigin) {
+          var l = document.createElement("link");
+          l.rel = "stylesheet";
+          if (crossOrigin) l.crossOrigin = "anonymous";
+          l.href = href;
+          document.head.appendChild(l);
+        }
+      })();
+    </script>
   </body>
 </html>
